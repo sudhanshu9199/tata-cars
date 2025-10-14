@@ -42,49 +42,59 @@ const Home = () => {
     tl.to(
       [h1, h3],
       {
-        y: 80,
+        y: 85,
         opacity: 0,
       },
       0
     );
 
-    tl.to(
-      car,
-      {
-        x: direction === "right" ? window.innerWidth : -window.innerWidth,
-        opacity: 0,
-      },
-      0
-    );
+    tl.to(car, {
+    x: direction === "right" ? window.innerWidth : -window.innerWidth,
+    opacity: 0,
+  }, 0);
 
     tl.add(() => {
-      setIndex((prev) => {
-        if (direction === "right") return (prev + 1) % cars.length;
-        else return (prev - 1 + cars.length) % cars.length;
-      });
+    setIndex((prev) => {
+      if (direction === "right") return (prev + 1) % cars.length;
+      else return (prev - 1 + cars.length) % cars.length;
     });
+  });
 
-    // 4️⃣ Instantly reset car & texts (before re-enter animation)
-    tl.set([car, h1, h3], {
-      x: direction === "right" ? -window.innerWidth : window.innerWidth,
-      y: -80,
-      opacity: 0,
-    });
+  // 4️⃣ Instantly reset car & texts (before re-enter animation)
+  tl.set([car], {
+    x: direction === "right" ? -window.innerWidth : window.innerWidth,
+    y: -10,
+    opacity: 0,
+  });
 
-    // 5️⃣ Animate new car driving in & texts rising in
-    tl.to(car, {
-      x: 0,
-      opacity: 1,
-    });
-    tl.to(
+    // Re-enter animation
+    tl.fromTo(
+      car,
+      {
+        x: direction === "right" ? -300 : 200,
+      },
+      {
+        x: 50,
+        opacity: 1,
+        duration: 2,
+        ease: "power3.out",
+      }
+    );
+
+    tl.fromTo(
       [h1, h3],
+      {
+        y: -20,
+        // opacity: 0,
+      },
       {
         y: 0,
         opacity: 1,
+        duration: 0.8,
         ease: "power2.out",
       },
-      "-=0.6"
-    ); // syncs with car movement
+      "-=0.3"
+    );
   };
   return (
     <div>
