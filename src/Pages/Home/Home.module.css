@@ -1,5 +1,15 @@
-.section1 {
+section {
   width: 100%;
+}
+
+.line {
+  width: 100%;
+  height: 0.1rem;
+  background: #a1a1a1;
+  margin: 1.8rem 0;
+}
+
+.section1 {
   height: 75vh;
   position: relative;
   -webkit-user-select: none;
@@ -100,4 +110,26 @@
 }
 .section1 .socialMedia i:active {
   transform: scale(0.95);
+}
+
+.section2 {
+  height: 100vh;
+  padding-top: 2.4rem;
+}
+.section2 .headerTexts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+}
+.section2 .headerTexts p {
+  font-size: 1.2rem;
+}
+.section2 .headerTexts h2 {
+  font-size: 5rem;
+  font-weight: 500;
+  margin-top: 1rem;
 }/*# sourceMappingURL=Home.module.css.map */

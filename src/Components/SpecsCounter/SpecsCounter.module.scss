@@ -1,0 +1,49 @@
+.section2 {
+  background: #0a0a0a;
+  color: #fff;
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+
+  .heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .specsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+  }
+
+  .specBox {
+    background: linear-gradient(145deg, #111, #222);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    width: 230px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+
+    .number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #ffcc00;
+      margin-bottom: 0.5rem;
+    }
+
+    .label {
+      font-size: 1rem;
+      opacity: 0.8;
+      letter-spacing: 0.5px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+    }
+  }
+}

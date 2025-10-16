@@ -1,36 +1,45 @@
 import style from "./Home.module.scss";
-import Navbar from "../../Components/Navbar/Navbar";
 import { useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CustomEase } from "gsap/CustomEase";
 // ScrollSmoother requires ScrollTrigger
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
+import SpecsCounter from "../../Components/SpecsCounter/SpecsCounter";
+import RangeRover from '../../Assets/images/RANGE_ROVER_CAR_PNGBG.png' ;
+import Discover from '../../Assets/images/DISCOVERY_CAR_PNGBG.png';
+import Defender from '../../Assets/images/DEFENDER_OCTA_CAR_PNGBG.png';
+import Jaguar from '../../Assets/images/Jaguar_CAR_PNGBG.png';
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, CustomEase);
 
 const Home = () => {
   const cars = [
     {
       name: "Range Rover",
-      type: "Type 00",
-      img: "https://freepngimg.com/thumb/car/2-2-car-transparent.png",
+      type: "Model 1",
+      img: RangeRover,
     },
     {
-      name: "BMW",
-      type: "M4 GTR",
-      img: "https://www.pngall.com/wp-content/uploads/5/Vehicle-PNG-Image.png",
+      name: "Discovery",
+      type: "Model 1",
+      img: Discover,
     },
     {
-      name: "Audi",
-      type: "R8",
-      img: "https://pngimg.com/d/mercedes_PNG80152.png",
+      name: "Defender",
+      type: "OCTA",
+      img: Defender,
     },
+    {
+      name: "Jaguar",
+      type: "R-Dynamic S",
+      img: Jaguar,
+    }
   ];
   const [index, setIndex] = useState(0);
 
-  const animateSlide = (direction) => {
+  const carAnimateSlide = (direction) => {
     const car = document.querySelector(`.${style.car}`);
     const h1 = document.querySelector(`.${style.section1} h1`);
     const h3 = document.querySelector(`.${style.section1} h3`);
@@ -71,7 +80,7 @@ const Home = () => {
     tl.fromTo(
       car,
       {
-        x: direction === "right" ? -300 : 200,
+        x: direction === "right" ? -200 : 200,
       },
       {
         x: 50,
@@ -96,10 +105,10 @@ const Home = () => {
       "-=0.3"
     );
   };
+
   return (
     <div>
-      <Navbar />
-      <div className={style.section1}>
+      <section className={style.section1}>
         <h3>{cars[index].name}</h3>
         <h1>{cars[index].type}</h1>
         <img
@@ -108,12 +117,12 @@ const Home = () => {
           loading="eager"
           alt="car image"
         />
-        <button className={style.leftBtn} onClick={() => animateSlide("left")}>
+        <button className={style.leftBtn} onClick={() => carAnimateSlide("left")}>
           <i className="ri-arrow-left-s-line"></i>
         </button>
         <button
           className={style.rightBtn}
-          onClick={() => animateSlide("right")}
+          onClick={() => carAnimateSlide("right")}
         >
           <i className="ri-arrow-right-s-line"></i>
         </button>
@@ -126,9 +135,17 @@ const Home = () => {
           <i className="ri-facebook-fill"></i>
           <i className="ri-instagram-fill"></i>
         </div>
-      </div>
+      </section>
 
-      <div className="section2"></div>
+      <div className={style.line}></div>
+
+      <section className={style.section2}>
+        <div className={style.headerTexts}>
+          <p>{cars[index].name}</p>
+        <h2>{cars[index].type}</h2>
+        </div>
+        <SpecsCounter />
+      </section>
     </div>
   );
 };
