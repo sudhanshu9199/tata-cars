@@ -24,15 +24,41 @@
 .navbar .middle {
   display: flex;
   font-size: 1.1rem;
-  color: rgb(166, 166, 166);
   gap: 2.8rem;
+  text-decoration: none;
+}
+.navbar .middle a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
 }
 .navbar .middle p {
+  color: rgb(166, 166, 166);
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: color 0.3s ease;
+  position: relative;
+}
+.navbar .middle p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: rgb(0, 33, 249);
+  transition: width 0.3s ease;
 }
 .navbar .middle p:hover {
   color: rgb(172, 172, 172);
+}
+.navbar .middle .active {
+  -webkit-text-decoration: underline 0.1rem solid rgb(0, 33, 249);
+          text-decoration: underline 0.1rem solid rgb(0, 33, 249);
+  text-underline-offset: 0.3rem;
+  color: rgb(163, 163, 163);
+}
+.navbar .middle .active::after {
+  width: 100%; /* full underline visible */
 }
 .navbar .right {
   font-size: 1.2rem;

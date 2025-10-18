@@ -1,4 +1,6 @@
 import style from './Navbar.module.scss'
+import { NavLink, useNavigate } from 'react-router';
+
 const Navbar = () => {
   return (
     <nav className={style.navbar}>
@@ -6,9 +8,9 @@ const Navbar = () => {
             <p>TATA <span>MOTORS</span></p>
         </div>
         <div className={style.middle}>
-            <p>Home</p>
-            <p>Products</p>
-            <p>About</p>
+            <NavLink className={({ isActive }) => (isActive ? style.active : "")} to="/"><p>Home</p></NavLink>
+            <NavLink className={({ isActive }) => (isActive ? style.active : "")} to="/products"><p>Products</p></NavLink>
+            <NavLink className={({ isActive }) => (isActive ? style.active : "")} to="/about"><p>About</p></NavLink>
         </div>
         <div className={style.right}>
             <p>My Account</p>
